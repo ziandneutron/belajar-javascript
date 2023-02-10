@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Belajar Javascript - Array</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var nilaiUjian = [10, 20, 30, 40];
+
+		console.log(nilaiUjian[2]);
+
+		nilaiUjian[3] = 80;
+
+		console.log(nilaiUjian);
+
+		var siswa = ['maulana', 'salwa', 'serli', 'ranti', 'tina'];
+		console.log(siswa[4]);
+
+		siswa[2] = siswa[2] + ' marlina';
+
+		console.log(siswa);
+
+		var nilaiUAS = [80, 85, 80, 75, 55];
+
+		function tampilkanNilaiUAS(index) {
+			console.log('nilai UAS ', siswa[index], ' adalah ', nilaiUAS[index]);
+		}
+
+		tampilkanNilaiUAS(0);
+		tampilkanNilaiUAS(1);
+		tampilkanNilaiUAS(2);
+		tampilkanNilaiUAS(3);
+		tampilkanNilaiUAS(4);
+
+	</script>
+</body>
+</html>

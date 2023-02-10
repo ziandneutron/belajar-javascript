@@ -1,0 +1,125 @@
+<!DOCTYPE html >
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Daftar Tugas</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/daisyui@2.38.0/dist/full.css" rel="stylesheet" type="text/css" />
+	<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body data-theme="light">
+	<div class="flex justify-center pt-10">
+		<div class="card w-96 bg-base-100 shadow-xl">
+			<div class="card-body">
+				<h2 class="card-title">Daftar Tugas</h2>
+				<p>Masukan Tugas :</p>
+				<div>
+					<form onsubmit="event.preventDefault(); kirimTugas(this)">
+						<div class="form-control w-full max-w-xs">
+						  <label class="label">
+						    <span class="label-text">Tugas</span>
+						  </label>
+						  <input type="text" name="tugas" placeholder="Tugas" class="input input-bordered w-full max-w-xs" />
+						</div>
+						<div class="form-control w-full max-w-xs">
+						  <label class="label">
+						    <span class="label-text">Hari</span>
+						  </label>
+						  <input type="text" name="hari" placeholder="Hari" class="input input-bordered w-full max-w-xs" />
+						</div>
+						<button class="btn gap-2 btn-primary mt-4">
+						  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+						  Buat
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="flex justify-center mt-4 pb-10">
+		<div class="card w-96 bg-base-100 shadow-xl">
+			<div class="card-body">
+				<ul class="menu bg-base-100 w-full" id="daftar-tugas">
+					<li>
+						<div class="flex">
+							<div class="flex-1">Belum Ada Tugas</div>
+							<div class="flex-0">
+								<button class="btn btn-error btn-xs btn-outline">Hapus</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		var daftarTugas = [];
+
+		daftarTugas = ambilDariDB();
+		tampilkanDaftarTugas();
+
+		function kirimTugas(element) {
+			var tugas = element.tugas.value;
+			var hari = element.hari.value;
+
+			daftarTugas.push({
+				tugas,
+				hari
+			});
+
+			tampilkanDaftarTugas();
+
+			element.tugas.value = '';
+			element.hari.value = '';
+
+			simpanKeDB(daftarTugas);
+		}
+
+		function tampilkanDaftarTugas() {
+			let daftarTugasHtml = '';
+
+			for (var i = 0; i < daftarTugas.length; i++) {
+				let tugas = daftarTugas[i]
+
+				daftarTugasHtml += `
+				<li>
+				<div class="flex">
+					<div class="flex-1">${tugas.hari} - ${tugas.tugas}</div>
+					<div class="flex-0">
+						<button onclick="hapus(${i})" class="btn btn-error btn-xs btn-outline">Hapus</button>
+					</div>
+				</div>
+				</li>`;
+			}
+
+			document.getElementById('daftar-tugas').innerHTML= daftarTugasHtml;
+		}
+
+		function hapus(index) {
+			if(confirm('apakah anda yakin ingin menghapus ?')) {
+				daftarTugas.splice(index, 1);
+				tampilkanDaftarTugas();				
+			}
+
+			simpanKeDB(daftarTugas);
+		}
+
+		function simpanKeDB(daftarTugas) {
+			localStorage.setItem('daftarTugas', JSON.stringify(daftarTugas));
+		}
+
+		function ambilDariDB() {
+			let daftarTugas = localStorage.getItem('daftarTugas');
+			if(daftarTugas) {
+				return JSON.parse(daftarTugas);	
+			} else {
+				return [];
+			}
+			
+		}
+	</script>
+</body>
+</html>

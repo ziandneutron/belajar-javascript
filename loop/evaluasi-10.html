@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>evaluasi-10</title>
+</head>
+<body>
+     <script type="text/javascript">
+     	//no-1
+     	for(var i = 10; i > 0; i--){
+			var o = '';
+
+	     	for( var j = 0; j < i; j++){
+		        	o += '*';
+		    	}	
+
+	    		console.log(o);
+          }
+
+     	//no-2
+     	var mobil = [
+			{
+				merk: 'avanza',
+				kecepatan: 100
+			},
+			{
+				merk: 'Bmw',
+				kecepatan: 150
+			},
+			{
+				merk: 'Lamborgini',
+				kecepatan: 300
+			}
+		];
+
+		function profilMobil(index) {
+			console.log('---------------')
+			
+			console.log('merk : ', mobil[index].merk)
+			
+			console.log('kecepatan : ', mobil[index].kecepatan)
+			
+			var rateKecepatan= '';
+			
+			if(mobil[index].kecepatan >= 150) {
+				rateKecepatan= 'kecepatan tinggi';
+			} else {
+				rateKecepatan= 'kecepatan rendah';
+			}
+			
+			console.log('Rate : ', rateKecepatan);
+		}
+
+		for (var index = 0; index < mobil.length; index++) {
+			profilMobil(index);	
+		}
+
+
+     </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Evaluasi 2 DOM HTML</title>
+</head>
+<body>
+	<h1>Nilai Siswa</h1>
+	<table>
+		<tr>
+			<td>Nama</td>
+			<td>:</td>
+			<td id="nama">Restu</td>
+		</tr>
+		<tr>
+			<td>Nilai</td>
+			<td>:</td>
+			<td id="nilai">80</td>
+		</tr>
+		<tr>
+			<td>Grade Nilai</td>
+			<td>:</td>
+			<td id="gradeNilai"></td>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+		var nilai = document.getElementById('nilai').innerHTML;
+		var grade = gradeNilai(nilai);
+
+		function gradeNilai(nilai) {
+			if(nilai >= 80) {
+				return 'A';
+			} else if(nilai >= 69) {
+				return 'B';
+			} else {
+				return 'C';
+			}			
+		}
+
+
+		document.getElementById('gradeNilai').innerHTML = grade;
+	</script>
+</body>
+</html>

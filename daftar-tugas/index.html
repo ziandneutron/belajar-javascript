@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Daftar Tugas</title>
+</head>
+<body>
+    <h1>Daftar Tugas</h1>
+    <form action="" onsubmit="event.preventDefault(); tambahTugas(this)">
+        <div>
+            <label for="tugas">Masukan Tugas</label>
+        </div>
+        <div>
+            <input type="text" id="tugas" name="tugas">
+        </div>
+        <div>
+            <label for="hari">Masukan Hari</label>
+        </div>
+        <div>
+            <input type="text" id="hari" name="hari">
+        </div>
+        <div style="padding-top: 10px;">
+            <button>Tambah</button>
+        </div>
+    </form>
+    <div>
+        <ul id="daftar-tugas">
+        </ul>
+    </div>
+
+    <script src="aplikasi-daftar-tugas.js"></script>
+</body>
+</html>

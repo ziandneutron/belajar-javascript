@@ -1,0 +1,85 @@
+<!DOCTYPE html >
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Daftar Tugas</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/daisyui@2.38.0/dist/full.css" rel="stylesheet" type="text/css" />
+	<script src="https://cdn.tailwindcss.com"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+	<script>
+	  // Your web app's Firebase configuration
+	  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	  const firebaseConfig = {
+	    apiKey: "AIzaSyD0V9OPI0MCCsPjJaMu2J5UNWUI2OimudM",
+	    authDomain: "todo-app-f7155.firebaseapp.com",
+	    projectId: "todo-app-f7155",
+	    storageBucket: "todo-app-f7155.appspot.com",
+	    messagingSenderId: "662994686903",
+	    appId: "1:662994686903:web:83eaf00a1ba397c6f5ce32",
+	    measurementId: "G-KQ4Q6SWLVN"
+	  };
+
+	  // Initialize Firebase
+	  const app = firebase.initializeApp(firebaseConfig);
+	</script>
+</head>
+<body data-theme="light">
+	<div class="flex justify-center pt-10">
+		<div class="card w-96 bg-base-100 shadow-xl">
+			<div class="card-body">
+				<h2 class="card-title">Daftar Tugas</h2>
+				<p>Masukan Tugas :</p>
+					<form id="form-todo" onsubmit="event.preventDefault(); AppTodoList.save(this)">
+						<input type="hidden" name="idTodo">
+						<div class="form-control w-full max-w-xs">
+						  <label class="label">
+						    <span class="label-text">Tugas</span>
+						  </label>
+						  <input type="text" name="todo" placeholder="Tugas" class="input input-bordered w-full max-w-xs" />
+						</div>
+						<div class="form-control w-full max-w-xs">
+						  <label class="label">
+						    <span class="label-text">Hari</span>
+						  </label>
+						  <input type="text" name="day" placeholder="Hari" class="input input-bordered w-full max-w-xs" />
+						</div>
+						<div class="form-control w-full max-w-xs">
+						  <label class="label">
+						    <span class="label-text">Gambar</span>
+						  </label>
+						  <input type="text" name="image" placeholder="Gambar" class="input input-bordered w-full max-w-xs" />
+						</div>
+						<button id="btn-save" class="btn gap-2 btn-primary mt-4">
+						  
+						  Buat
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="flex justify-center mt-4 pb-10">
+		<div class="card w-96 bg-base-100 shadow-xl">
+			<div class="card-body">
+				<ul class="menu bg-base-100 w-full" id="daftar-tugas">
+					<li>
+						<div class="flex">
+							<div class="flex-1">Belum Ada Tugas</div>
+							<div class="flex-0">
+								<button class="btn btn-error btn-xs btn-outline">Hapus</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!-- <script type="text/javascript" src="./to-do-oop.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Evaluasi 3-1 DOM HTML</title>
+</head>
+<body>
+	<h2>Mobil</h2>
+	<form onsubmit="event.preventDefault(); kirimStatus(this)">
+		<div>
+			<input type="text" name="merk" placeholder="Merk">	
+		</div>
+		<div>
+			<input type="text" name="tipe" placeholder="Tipe">	
+		</div>
+		<div>
+			<input type="text" name="warna" placeholder="Warna">	
+		</div>
+		<div>
+			<input type="text" name="kapasitasSilinder" placeholder="Kapasitas Silinder">	
+		</div>
+		<div>
+			<button>Simpan</button>
+		</div>	
+	</form>
+	<h2>Mobil</h2>
+	<table>
+		<tr>
+			<td>Merk</td>
+			<td>:</td>
+			<td id="merk">BMW</td>
+		</tr>
+		<tr>
+			<td>Tipe</td>
+			<td>:</td>
+			<td id="tipe">i800</td>
+		</tr>
+		<tr>
+			<td>Warna</td>
+			<td>:</td>
+			<td id="warna">Hitam</td>
+		</tr>
+		<tr>
+			<td>Kapasitas Silinder</td>
+			<td>:</td>
+			<td id="kapasitasSilinder">1800</td>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+	function kirimStatus(element) {
+		
+		const merk = element.merk.value;
+		const tipe = element.tipe.value;
+		const warna = element.warna.value;
+		const kapasitasSilinder = element.kapasitasSilinder.value;
+
+
+		document.getElementById('merk').innerHTML = merk;
+		document.getElementById('tipe').innerHTML = tipe;
+		document.getElementById('warna').innerHTML = warna;
+		document.getElementById('kapasitasSilinder').innerHTML = kapasitasSilinder;
+	}
+</script>
+</body>
+</html>

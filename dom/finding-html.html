@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Belajar Javascript HTML DOM - Menemukan Elemen HTML</title>
+</head>
+<body>
+	<h1>Saya Sedang Belajar HTML DOM</h1>
+
+	<h1 id="judul">Temukan Elemen Berdasarkan ID</h1>
+
+	<h1 class="judul-konten">Temukan Elemen Berdasarkan Nama Class 1</h1>
+	<h1 class="judul-konten">Temukan Elemen Berdasarkan Nama Class 2</h1>
+
+	<p>Temukan Elemen Berdasarkan nama Tag</p>
+
+	<script type="text/javascript">
+		const elemenJudul = document.getElementById('judul');
+		console.log(elemenJudul);
+
+		const elemenJudulKonten = document.getElementsByClassName('judul-konten');
+		console.log(elemenJudulKonten);
+
+		const elemenTagP = document.getElementsByTagName('p');
+		console.log(elemenTagP);
+
+		//Finding HTML elements by HTML object collections
+		const elemenJudulKonten1 = elemenJudulKonten[1];
+		console.log(elemenJudulKonten1);
+	</script>
+</body>
+</html>

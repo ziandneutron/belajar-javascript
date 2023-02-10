@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Belajar Javascript - Daftar Siswa</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var siswa = [
+			{
+				nama: 'maulana',
+				nilaiUjian: 90
+			},
+			{
+				nama: 'salwa',
+				nilaiUjian: 80
+			},
+			{
+				nama: 'tina',
+				nilaiUjian: 85
+			}
+		];
+
+		console.log(siswa[1].nama);
+		console.log(siswa[1].nilaiUjian);
+		console.log('nama: ', siswa[1].nama, ', nilai ujian : ', siswa[1].nilaiUjian);
+
+		var salwa = siswa[1];
+		console.log(salwa.nama);
+
+		var maulana = siswa[0];
+		console.log(maulana);
+
+		console.log('Nama : ', siswa[2].nama)
+		console.log('Nilai : ', siswa[2].nilaiUjian)
+		
+		function profilSiswa(index) {
+			console.log('=======================')
+			console.log('Nama : ', siswa[index].nama)
+			console.log('Nilai : ', siswa[index].nilaiUjian)
+			var kelulusan = '';
+			if(siswa[index].nilaiUjian > 80) {
+				kelulusan = 'lulus';
+			} else {
+				kelulusan = 'tidak lulus';
+			}
+			console.log('Hasil : ', kelulusan);
+		}
+
+		profilSiswa(0);
+		profilSiswa(1);
+		profilSiswa(2);
+
+
+	</script>
+</body>
+</html>

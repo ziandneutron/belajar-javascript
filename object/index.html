@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Belajar Javascript - Object</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var siswa = {
+			nama: 'Andi',
+			kelas: 'XII A',
+			nilaiUjian: 85,
+			ucapkanHai: function() {
+				console.log('Hai nama saya andi');
+			},
+			ucapkanHaiKeTeman: function(namaTeman) {
+				console.log(`Hai ${namaTeman}`);
+			}
+		}
+
+		console.log('nama siswa ' + siswa.nama);
+		
+		siswa.ucapkanHai();
+
+		siswa.ucapkanHaiKeTeman('Aisyah');
+
+		siswa.ucapkanHaiKeTeman('Salwa');
+
+		siswa.ucapkanHaiKeTeman('Tina');
+
+	</script>
+</body>
+</html>

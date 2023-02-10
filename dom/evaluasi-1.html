@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Evaluasi 1 DOM HTML</title>
+</head>
+<body>
+	<h1>My Biodata</h1>
+	<table>
+		<tr>
+			<td>Nama</td>
+			<td>:</td>
+			<td id="name"></td>
+		</tr>
+		<tr>
+			<td>Hobi</td>
+			<td>:</td>
+			<td id="hobby"></td>
+		</tr>
+		<tr>
+			<td>Alamat</td>
+			<td>:</td>
+			<td id="address"></td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		var person = {
+			name: 'Zian',
+			hobby: 'Fishing',
+			address: 'Cianjur'
+		}	
+
+		document.getElementsByTagName('h1')[0].innerHTML = 'Biodata Saya'
+		document.getElementById('name').innerHTML = person.name
+		document.getElementById('hobby').innerHTML = person.hobby
+		document.getElementById('address').innerHTML = person.address
+
+	</script>
+</body>
+</html>

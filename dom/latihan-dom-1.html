@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Biodata</title>
+</head>
+<body>
+	<h1 id="title">My Biodata</h1>
+	<div id="name"></div>
+	<div id="address"></div>
+	<div id="hobby"></div>
+
+	<h2>Content</h2>
+	<div id="content"></div>
+
+	<script type="text/javascript">
+		var person = {
+			name: 'Delly Fauzian',
+			address: 'Cianjur',
+			hobby: 'fishing'
+		}
+
+		document.getElementById('name').innerHTML = person.name;
+		document.getElementById('address').innerHTML = person.address;
+		document.getElementById('hobby').innerHTML = person.hobby;
+		document.getElementById('title').style = 'color: red; background: blue';
+
+		document.getElementById('content').innerHTML = `Ini akun medsos saya <a href="https://facebook.com/delly.fauzian1">${person.name}</a>`
+	</script>
+</body>
+</html>

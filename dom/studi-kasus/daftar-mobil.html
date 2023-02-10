@@ -1,0 +1,199 @@
+<!DOCTYPE html >
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>DaftarMobil</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/daisyui@2.38.0/dist/full.css" rel="stylesheet" type="text/css" />
+	<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body data-theme="light">
+	<div class="flex justify-center pt-10">
+		<div class="card w-96 bg-base-100 shadow-xl bg-white">
+			<div class="card-body">
+				<h2 class="card-title">Car</h2>
+				<p>enter car</p>
+				<div>
+					<form onsubmit="event.preventDefault(); AppSendCar.create(this)">
+						<div class="form-control w-full max-w-xs">
+							  <label class="label">
+							    <span class="label-text">Merk</span>
+							  </label>
+							  <input type="text" name="merk" placeholder="Merk" class="input input-bordered w-full max-w-xs" />
+						</div>
+						<div class="form-control w-full max-w-xs">
+							  <label class="label">
+							    <span class="label-text">Type</span>
+							  </label>
+							  <input type="text" name="type" placeholder="Type" class="input input-bordered w-full max-w-xs" />
+						</div>
+						<div class="form-control w-full max-w-xs">
+						  	  <label class="label">
+						    	<span class="label-text">Color</span>
+						  	  </label>
+							<input type="text" name="color" placeholder="Color" class="input input-bordered w-full max-w-xs" />
+						</div>
+						<div class="form-control w-full max-w-xs">
+						  	  <label class="label">
+						  	  </label>
+							<input type="text" name="cylinderCapacity" placeholder="Cylinder Capacity" class="input input-bordered w-full max-w-xs" />
+						</div>
+						<button class="btn btn-outline btn-warning btn btn-block mt-4">Create</button>
+					</form>
+				</div>
+			</div>
+		</div>	
+	</div>
+
+
+
+	<div class="flex justify-center mt-4 pb-10">
+		<div class="card w-96 bg-base-100 shadow-xl">
+			<div class="card-body">
+				<table class="menu bg-base-100 w-full" id="car-List">
+					<tr>
+						<td>Merk</td>
+						<td>:</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Type</td>
+						<td>:</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Color</td>
+						<td>:</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Cylinder Capacity</td>
+						<td>:</td>
+						<td></td>
+					</tr>
+						<div class="flex">
+							<div class="flex-1"><b>Mobil</b></div>
+							<div class="flex-0"></div>
+						</div>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		class Car {
+			constructor({ merk, type, color, cylinderCapacity }) {
+				this.merk = merk;
+				this.type = type;
+				this.color = color;
+				this.cylinderCapacity = cylinderCapacity;
+			}
+		}
+
+		class DB {
+			save(carList) {
+				localStorage.setItem('carList', JSON.stringify(carList));
+			}
+
+			get() {
+				let carList = localStorage.getItem('carList');
+
+				if(carList) {
+					return JSON.parse(carList);	
+				} else {
+					return [];
+				}
+			}
+		}
+
+
+		class CarList {
+			constructor() {
+				this.carList = [];
+				this.db = new DB;
+				this.carList = this.db.get();
+				document.getElementById(this.car);
+			}
+
+			create(element) {
+				let merk = element.merk.value;
+				let type = element.type.value;
+				let color = element.color.value;
+				let cylinderCapacity = element.cylinderCapacity.value;
+
+				console.log('merk', merk);
+				let car = new Car({
+					merk,
+					type,
+					color,
+					cylinderCapacity
+				})
+
+				this.carList.push(car);
+
+				element.merk.value = '';
+				element.type.value = '';
+				element.color.value = '';
+				element.cylinderCapacity.value = '';
+
+
+				this.db.save(this.carList);
+				this.show()
+			}
+
+			show() {
+				let carListHtml = '';
+
+				for (var i = 0; i < this.carList.length; i++) {
+					let car = this.carList[i]
+
+					carListHtml += `<tr>
+							<div class="flex">
+								<div class="flex-1">
+												<td>Merk</td>
+												<td>:</td>
+												<td>${car.merk}</td>
+											</tr>
+											<tr>
+												<td>Tipe</td>
+												<td>:</td>
+												<td>${car.type}</td>
+											</tr>
+											<tr>
+												<td>Warna</td>
+												<td>:</td>
+												<td>${car.color}</td>
+											</tr>
+											<tr>
+												<td>Kapasitas Silinder</td>
+												<td>:</td>
+												<td>${car.cylinderCapacity}</td>
+
+											<td class="flex-0">
+											<button onclick="hapus(${i})" class="btn btn-error btn-xs btn-outline">Hapus</button>
+										</td>
+									</div>
+								</tr>`
+			}
+
+				document.getElementById('car-List').innerHTML= carListHtml;
+			}	
+
+			delete(index) {
+				if(confirm('apakah anda yakin ingin menghapus ?')) {
+					this.carList.splice(index, 1);
+					this.show();				
+				}
+
+				this.db.save(this.carList);
+			}
+		}
+
+		let AppSendCar = new CarList();
+		AppSendCar.show();
+
+	</script>
+</body>
+</html>

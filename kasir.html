@@ -1,0 +1,67 @@
+<html>
+    <script>
+    var selesai = 0;
+    while(selesai === 0) {
+        var pelanggan = {
+            nama: '',
+            alamat: ''
+        }
+
+        var produk = [
+            {
+                nama: 'shampo',
+                harga: 10000
+            },
+            {
+                nama: 'sikat gigi',
+                harga: 5000
+            },
+            {
+                nama: 'sabun mandi',
+                harga: 7000
+            }
+        ]
+
+        var transaksi = {
+            jumlah: 0,
+            totalHarga: 0,
+            produk: {
+                nama: null,
+                harga: null
+            },
+            diskon: 0,
+            totalBayar: 0
+        }
+
+        const DISKON_PERSEN = 10;
+        const MINIMAL_TOTAL_HARGA = 20000;
+
+        pelanggan.nama = prompt('input nama pelanggan :');
+        pelanggan.alamat = prompt('input alamat pelanggan :');
+        const indexProduct = prompt('pilih produk yang mau dibeli (0: shampo, 1: sikat gigi, 2: sabun mandi) : ');
+        
+        transaksi.produk = produk[indexProduct];
+        transaksi.jumlah = Number(prompt('input jumlah produk:'));
+        transaksi.totalHarga = transaksi.produk.harga * transaksi.jumlah;
+        transaksi.totalBayar = transaksi.totalHarga;
+
+        if(transaksi.totalHarga > MINIMAL_TOTAL_HARGA) {
+            transaksi.diskon = transaksi.totalHarga * DISKON_PERSEN / 100;
+            transaksi.totalBayar = transaksi.totalHarga - transaksi.diskon;
+        }
+        console.log('==================================')
+        console.log('nama pelanggan:', pelanggan.nama)
+        console.log('alamat pelanggan:', pelanggan.alamat)
+        console.log('Transaksi pembelian')
+        console.log('Produk : ', transaksi.produk.nama)
+        console.log('Harga Produk : ', transaksi.produk.harga)
+        console.log('Jumlah Produk : ', transaksi.jumlah)
+        console.log('Total Harga : ', transaksi.totalHarga)
+        console.log('Diskon : ', transaksi.diskon)
+        console.log('Total Bayar : ', transaksi.totalBayar)
+        console.log('==================================')
+
+        selesai = Number(prompt('Apakah sudah selesai ? (1: ya, 0: tidak)'));
+    }
+    </script>
+</html>

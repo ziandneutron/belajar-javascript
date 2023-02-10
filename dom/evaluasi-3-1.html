@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Evaluasi 3 DOM HTML</title>
+</head>
+<body>
+	<button onclick="tampilkanInstruksi('Berhenti')">Merah</button>
+	<button onclick="tampilkanInstruksi('Hati hati')">Kuning</button>
+	<button onclick="tampilkanInstruksi('Jalan')">Hijau</button>
+
+	<h3>Instruksi</h3>
+	<h2 id="instruksi"></h2>
+
+	<script type="text/javascript">
+		function tampilkanInstruksi(textIntruksi) {
+			document.getElementById('instruksi').innerHTML = textIntruksi;
+		}
+	</script>
+
+	<h1>Contoh ke 2</h1>
+	<button onclick="tampilkanInstruksi2(this)" value="Berhenti">Merah</button>
+	<button onclick="tampilkanInstruksi2(this)" value="Hati-hati">Kuning</button>
+	<button onclick="tampilkanInstruksi2(this)" value="Jalan">Hijau</button>
+
+	<h3>Instruksi</h3>
+	<h2 id="instruksi2"></h2>
+
+	<script type="text/javascript">
+		function tampilkanInstruksi2(element) {
+			document.getElementById('instruksi2').innerHTML = element.value;
+		}
+	</script>
+</body>
+</html>
+</html>

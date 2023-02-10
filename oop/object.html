@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Belajar Javascript - OOP</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var tina = {
+			firstName: 'Tina',
+			lastName: 'Marlina',
+			fullName() {
+				return `${this.firstName} ${this.lastName}`;
+			}
+		}
+
+		console.log(tina.fullName());
+
+		class Person {
+			constructor({ firstName, lastName }) {
+				this.firstName = firstName;
+				this.lastName = lastName;
+			}
+
+			getFullName() {
+				return `${this.firstName} ${this.lastName}`;
+			}
+
+			run() {
+				return 'Berlari';
+			}
+
+			jump() {
+				return 'Lompat';
+			}
+		}
+
+		class Student {
+			constructor(name) {
+				this.name
+			}
+
+
+		}
+
+		class Car {
+			constructor({ color, merk }) {
+				this.color = color;
+				this.merk = merk;
+				this.statusEngine = 'off';
+			}
+
+			run() {
+				return 'Berlari';
+			}
+
+			startEngine() {
+				this.statusEngine = 'on';
+			}
+		}
+
+		let bmw = new Car({ color: 'black', merk: 'BMW'});
+		console.log(bmw);
+
+		const maulana = new Person({ firstName: 'Maulana', lastName: 'Putra'});
+		const salwa = new Person({ firstName: 'Salwa', lastName: 'Putri'});
+
+		console.log(maulana.getFullName());
+
+		console.log(maulana.jump());
+
+		console.log(salwa.jump());
+	</script>
+</body>
+</html>

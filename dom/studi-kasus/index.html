@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Studi Kasus - Daftar Tugas</title>
+</head>
+<body>
+	<h1>Daftar Tugas</h1>
+	<div>Masukan Tugas : </div>
+	<div>
+		<form onsubmit="event.preventDefault(); buatDaftarTugas(this)">
+			<input type="text" name="tugas"><button>Buat</button>
+		</form>
+	</div>
+	<ul id="daftar-tugas">
+		<li>Tugas satu</li>
+		<li>Tugas dua</li>
+		<li>Tugas tiga</li>
+	</ul>
+
+	<script type="text/javascript">
+		var daftarTugas = ['Tugas satu', 'tugas dua'];
+		function buatDaftarTugas(element) {
+			var tugas = element.tugas.value;
+
+			daftarTugas.push(tugas)
+			element.tugas.value = '';
+
+			tampilkanDaftarTugas();
+			return false;
+		}
+
+		function tampilkanDaftarTugas() {
+			var daftarTugasHtml = '';
+			for (var i = 0; i < daftarTugas.length; i++) {
+				daftarTugasHtml += `<li>${daftarTugas[i]}</li>`;
+			}
+
+			document.getElementById('daftar-tugas').innerHTML = daftarTugasHtml;
+		}
+
+		tampilkanDaftarTugas();
+	</script>
+</body>
+</html>

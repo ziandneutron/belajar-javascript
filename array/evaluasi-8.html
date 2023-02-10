@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Belajar Javascript - Evaluasi 8</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var mobil = ['avanza', 'terios', 'mazda', 'lamborgini', 'bmw', 'pajero'];
+
+		console.log(mobil[4]);
+
+		mobil[1] = 'rush';
+
+		console.log(mobil);
+
+		var kecepatan = [100, 120, 130, 200, 150, 170];
+
+		function kecepatanMobil(index) {
+			console.log(mobil[index], ' Kecepatannya adalah ', kecepatan[index], ' km/jam')	
+		}
+		
+		kecepatanMobil(0);
+		kecepatanMobil(1);
+		kecepatanMobil(2);
+		kecepatanMobil(3);
+		kecepatanMobil(4);
+		kecepatanMobil(5);
+
+		function rateKecepatanMobil(index) {
+			var rate = '';
+			if(kecepatan[index] >= 150 ) {
+				rate = 'Tinggi';
+			} else {
+				rate = 'Rendah';
+			}
+			console.log(mobil[index],' kecepatan ', rate)
+		}
+		
+		rateKecepatanMobil(0);
+		rateKecepatanMobil(1);
+		rateKecepatanMobil(2);
+		rateKecepatanMobil(3);
+		rateKecepatanMobil(4);
+		rateKecepatanMobil(5);
+
+
+	</script>
+</body>
+</html>
