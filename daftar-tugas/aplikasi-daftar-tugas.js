@@ -6,11 +6,13 @@ function tambahTugas(form) {
 
 const aplikasiDaftarTugas = {
     tugas: {
+        index: -1,
         tugas: null,
         hari: null
     },
     daftarTugas: [],
     inputTugas: function (form) {
+        this.tugas.index = form.index.value;
         this.tugas.tugas = form.tugas.value;
         this.tugas.hari = form.hari.value;
 
@@ -24,22 +26,46 @@ const aplikasiDaftarTugas = {
             return false;
         }
 
-        this.daftarTugas.push(copy(this.tugas));
-        this.hapusTugas(form);
+        if(this.tugas.index == -1) {
+            this.daftarTugas.push(copy(this.tugas));
+        } else {
+            this.daftarTugas[this.tugas.index] = copy(this.tugas)
+        }
+
+        this.resetFormTugas(form);
     },
-    hapusTugas: function (form) {
+    resetFormTugas: function (form) {
         this.tugas.tugas = null;
         this.tugas.hari = null;
+        this.tugas.index = -1;
 
         form.tugas.value = this.tugas.tugas;
         form.hari.value = this.tugas.hari;
+        form.index.value = this.tugas.index;
+
+        document.getElementById('btn-save-tugas').innerHTML = 'Tambah';
     },
     menampilkanDaftartTugas: function () {
         const componentDaftarTugas = document.getElementById('daftar-tugas');
         componentDaftarTugas.innerHTML = '';
-        this.daftarTugas.forEach(tugas => {
-            componentDaftarTugas.innerHTML += `<li>${tugas.tugas} | ${tugas.hari}</li>`;
+        this.daftarTugas.forEach((tugas, index) => {
+            componentDaftarTugas.innerHTML += `<li>${tugas.tugas} | ${tugas.hari} <button onclick="aplikasiDaftarTugas.editTugas(${index})">Edit</button><button onclick="aplikasiDaftarTugas.hapusTugas(${index})">Hapus</button></li>`;
         });
+    },
+    hapusTugas: function (index) {
+        if(confirm('Apakah anda yakin ingin menghapus data ini ?')) {
+            this.daftarTugas.splice(index, 1);
+            this.menampilkanDaftartTugas();
+        }
+    },
+    editTugas: function (index) {
+        const tugas = this.daftarTugas[index];
+        const form = document.getElementById('form-tugas');
+        form.tugas.value = tugas.tugas;
+        form.hari.value = tugas.hari;
+        form.index.value = index;
+
+        document.getElementById('btn-save-tugas').innerHTML = 'Edit';
     }
 }
 

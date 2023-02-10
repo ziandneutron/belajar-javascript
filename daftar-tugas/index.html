@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1>Daftar Tugas</h1>
-    <form action="" onsubmit="event.preventDefault(); tambahTugas(this)">
+    <form id="form-tugas" action="" onsubmit="event.preventDefault(); tambahTugas(this)">
+        <input name="index" type="hidden" value="-1">
         <div>
             <label for="tugas">Masukan Tugas</label>
         </div>
@@ -22,7 +23,7 @@
             <input type="text" id="hari" name="hari">
         </div>
         <div style="padding-top: 10px;">
-            <button>Tambah</button>
+            <button id="btn-save-tugas">Tambah</button>
         </div>
     </form>
     <div>
