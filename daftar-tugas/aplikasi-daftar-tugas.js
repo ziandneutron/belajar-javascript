@@ -49,7 +49,15 @@ const aplikasiDaftarTugas = {
         const componentDaftarTugas = document.getElementById('daftar-tugas');
         componentDaftarTugas.innerHTML = '';
         this.daftarTugas.forEach((tugas, index) => {
-            componentDaftarTugas.innerHTML += `<li>${tugas.tugas} | ${tugas.hari} <button onclick="aplikasiDaftarTugas.editTugas(${index})">Edit</button><button onclick="aplikasiDaftarTugas.hapusTugas(${index})">Hapus</button></li>`;
+            componentDaftarTugas.innerHTML += `<li>
+                <div class="flex justify-between">
+                    <div>${tugas.tugas} | ${tugas.hari}</div>
+                    <div>
+                        <button class="btn btn-xs mr-2" onclick="aplikasiDaftarTugas.editTugas(${index})">Edit</button>
+                        <button class="btn btn-xs btn-error" onclick="aplikasiDaftarTugas.hapusTugas(${index})">Hapus</button>
+                    <div>
+                </div>
+            </li>`;
         });
     },
     hapusTugas: function (index) {

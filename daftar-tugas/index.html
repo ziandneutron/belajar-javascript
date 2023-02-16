@@ -1,36 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="bumblebee">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplikasi Daftar Tugas</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.50.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <h1>Daftar Tugas</h1>
-    <form id="form-tugas" action="" onsubmit="event.preventDefault(); tambahTugas(this)">
-        <input name="index" type="hidden" value="-1">
-        <div>
-            <label for="tugas">Masukan Tugas</label>
+    <div class="container mx-auto">
+        <div class="flex justify-center gap-5">
+            <div class="card w-96 bg-base-100 shadow-xl">
+                <form id="form-tugas" action="" onsubmit="event.preventDefault(); tambahTugas(this)">
+                    <div class="card-body">
+                        <h2 class="card-title">Daftar Tugas</h2>
+                        <p>
+                            <input name="index" type="hidden" value="-1">
+                            <div>
+                                <label for="tugas" class="label">Masukan Tugas</label>
+                            </div>
+                            <div>
+                                <input type="text" id="tugas" name="tugas" class="input input-bordered w-full max-w-xs" placeholder="Masukan Tugas">
+                            </div>
+                            <div>
+                                <label for="hari" class="label">Masukan Hari</label>
+                            </div>
+                            <div>
+                                <input type="text" id="hari" name="hari" class="input input-bordered w-full max-w-xs" placeholder="Masukan Hari">
+                            </div>
+                        </p>
+                        <div class="card-actions justify-end">
+                            <button id="btn-save-tugas" class="btn btn-primary">Tambah</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card w-96 bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title">Daftar Tugas</h2>
+                    <p>
+                        <ul id="daftar-tugas" class="menu">
+                        </ul>
+                    </p>
+                </div>
+            </div>
         </div>
-        <div>
-            <input type="text" id="tugas" name="tugas">
-        </div>
-        <div>
-            <label for="hari">Masukan Hari</label>
-        </div>
-        <div>
-            <input type="text" id="hari" name="hari">
-        </div>
-        <div style="padding-top: 10px;">
-            <button id="btn-save-tugas">Tambah</button>
-        </div>
-    </form>
-    <div>
-        <ul id="daftar-tugas">
-        </ul>
     </div>
-
+    
     <script src="aplikasi-daftar-tugas.js"></script>
 </body>
 </html>
