@@ -3,6 +3,15 @@ function tambahTugas(form) {
     aplikasiDaftarTugas.inputTugas(form);
     aplikasiDaftarTugas.menampilkanDaftartTugas();
 }
+const databaseDaftarTugas = {
+    save(daftarTugas) {
+        localStorage.setItem('daftarTugas', JSON.stringify(daftarTugas));
+    },
+
+    get() {
+        return JSON.parse(localStorage.getItem('daftarTugas'));
+    }
+}
 
 const aplikasiDaftarTugas = {
     tugas: {
@@ -31,7 +40,7 @@ const aplikasiDaftarTugas = {
         } else {
             this.daftarTugas[this.tugas.index] = copy(this.tugas)
         }
-
+        databaseDaftarTugas.save(this.daftarTugas);
         this.resetFormTugas(form);
     },
     resetFormTugas: function (form) {
@@ -46,6 +55,7 @@ const aplikasiDaftarTugas = {
         document.getElementById('btn-save-tugas').innerHTML = 'Tambah';
     },
     menampilkanDaftartTugas: function () {
+        this.daftarTugas = databaseDaftarTugas.get();
         const componentDaftarTugas = document.getElementById('daftar-tugas');
         componentDaftarTugas.innerHTML = '';
         this.daftarTugas.forEach((tugas, index) => {
@@ -63,6 +73,7 @@ const aplikasiDaftarTugas = {
     hapusTugas: function (index) {
         if(confirm('Apakah anda yakin ingin menghapus data ini ?')) {
             this.daftarTugas.splice(index, 1);
+            databaseDaftarTugas.save(this.daftarTugas);
             this.menampilkanDaftartTugas();
         }
     },
@@ -80,3 +91,5 @@ const aplikasiDaftarTugas = {
 function copy(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
+
+aplikasiDaftarTugas.menampilkanDaftartTugas();
